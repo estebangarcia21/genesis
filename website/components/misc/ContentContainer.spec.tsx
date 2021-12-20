@@ -1,12 +1,12 @@
-import { Container } from './Container';
+import { ContentContainer } from './ContentContainer';
 import { render } from '@testing-library/react';
 
-describe('Container', () => {
+describe('ContentContainer', () => {
   it('renders its children', () => {
     const { getByText } = render(
-      <Container>
+      <ContentContainer>
         <p>Hello world!</p>
-      </Container>
+      </ContentContainer>
     );
 
     const child = getByText(/hello world/i);
@@ -16,9 +16,9 @@ describe('Container', () => {
 
   it('sets the parent tag', () => {
     const { getByText } = render(
-      <Container tag="section">
+      <ContentContainer tag="section">
         <p>Hello world!</p>
-      </Container>
+      </ContentContainer>
     );
 
     const child = getByText(/hello world/i);
@@ -28,9 +28,9 @@ describe('Container', () => {
 
   it('wraps the container with a classname', () => {
     const { container } = render(
-      <Container className="some-class">
+      <ContentContainer className="some-class">
         <p>Hello world!</p>
-      </Container>
+      </ContentContainer>
     );
 
     expect(container.tagName).toMatch(/div/i);

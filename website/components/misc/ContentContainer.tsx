@@ -1,14 +1,14 @@
-export interface ContainerProps {
+export interface ContentContainerProps {
   className?: string;
   tag?: keyof JSX.IntrinsicElements;
   children: React.ReactNode;
 }
 
-export function Container({
+export function ContentContainer({
   children,
   className,
   tag: Tag = 'div'
-}: ContainerProps) {
+}: ContentContainerProps) {
   const display = <Tag className="mx-auto max-w-6xl">{children}</Tag>;
 
   return className ? <div className={className}>{display}</div> : display;

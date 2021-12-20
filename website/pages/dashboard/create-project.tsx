@@ -1,13 +1,15 @@
-import { Container } from 'components/layout/Container';
+import { ContentContainer } from 'components/misc/ContentContainer';
 
 export default function CreateProject() {
   return (
     <div>
       <title>Create Project</title>
 
-      <Container tag="main">
-        <h1>Create Project</h1>
-      </Container>
+      <ContentContainer tag="main" className="my-32">
+        <h1 className="text-4xl font-semibold">
+          What would you like to build today?
+        </h1>
+      </ContentContainer>
     </div>
   );
 }
