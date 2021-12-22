@@ -1,4 +1,4 @@
-import styles from 'styles/dashboard/create-project.module.css';
+import styles from 'styles/dashboard/create-project.module.scss';
 import { DashboardCreateProjectCardSelector } from 'components/DashboardCreateProjectCardSelector';
 import { ContentContainer } from 'components/misc/ContentContainer';
 import { useForm } from 'react-hook-form';
