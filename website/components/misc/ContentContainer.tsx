@@ -9,7 +9,7 @@ export function ContentContainer({
   className,
   tag: Tag = 'div'
 }: ContentContainerProps) {
-  const display = <Tag className="mx-auto max-w-6xl">{children}</Tag>;
+  const display = <Tag className="mx-auto max-w-6xl px-8">{children}</Tag>;
 
   return className ? <div className={className}>{display}</div> : display;
 }

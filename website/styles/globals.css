@@ -22,11 +22,16 @@ a {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+button {
   font-family: 'Readex Pro', sans-serif;
 }
 
 p,
-a {
+a,
+input {
   font-family: 'Open Sans', sans-serif;
 }
