@@ -38,11 +38,9 @@ export default function CreateProject() {
     <div>
       <title>Create Project</title>
 
-      <div className="bg-blueB p-4 text">
-        <h1 className="text-center font-semibold text-white">
-          Start a new idea
-        </h1>
-      </div>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Start a new idea</h1>
+      </header>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <ContentContainer className="my-32">

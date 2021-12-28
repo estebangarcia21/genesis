@@ -1,3 +1,11 @@
+.header {
+  @apply bg-blueB p-4 text;
+
+  .title {
+    @apply text-center font-semibold text-white;
+  }
+}
+
 .submitContainer {
   @apply mt-16 bg-gradient-to-tr from-blueA to-blueB p-12 rounded shadow-lg;
 
