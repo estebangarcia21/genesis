@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           </div>
         </IndexContentContainer>
 
-        <IndexContentContainer usePadding verticalPadding>
+        <IndexContentContainer usePadding verticalPadding={64}>
           {({ paddingStyles }) => (
             <div className={styles.expressInfoContainer} style={paddingStyles}>
               <div>

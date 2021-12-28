@@ -17,7 +17,7 @@ export interface IndexContentContainerProps extends ContentContainerProps {
     | Children['children']
     | ((props: IndexContentContainerChildFnProps) => React.ReactNode);
   usePadding?: boolean;
-  verticalPadding?: boolean;
+  verticalPadding?: number;
 }
 
 export type IndexContentContainerChildFnProps = {
@@ -28,7 +28,7 @@ export function IndexContentContainer({
   className = 'py-16',
   tag = 'section',
   children,
-  verticalPadding,
+  verticalPadding = 0,
   usePadding,
   ...props
 }: IndexContentContainerProps) {
@@ -53,8 +53,8 @@ export function IndexContentContainer({
           paddingStyles: {
             paddingLeft: HORIZONTAL_MARGIN,
             paddingRight: HORIZONTAL_MARGIN,
-            paddingTop: verticalPadding ? '64px' : 0,
-            paddingBottom: verticalPadding ? '64px' : 0
+            paddingTop: verticalPadding,
+            paddingBottom: verticalPadding
           }
         })
       ) : (
