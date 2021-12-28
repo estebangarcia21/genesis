@@ -1,7 +1,74 @@
-.title {
+@mixin titleBase() {
+  @apply text-blueGray;
 }
 
-.section {
-  .title {
+.header {
+  @apply py-36;
+
+  .container {
+    @apply flex flex-row space-x-24;
+
+    @mixin flexSection() {
+      @apply flex-1;
+    }
+
+    .content {
+      @include flexSection();
+
+      > h1 {
+        @include titleBase();
+
+        @apply text-5xl font-bold leading-[4rem] text-blueGray;
+      }
+
+      > h2 {
+        @apply mt-6 text-gray-600 leading-[2rem];
+      }
+
+      .buttons {
+        @apply flex flex-row items-center space-x-6 mt-10;
+      }
+    }
+
+    .graphic {
+      @include flexSection();
+    }
   }
+}
+
+.expressInfoContainer {
+  @apply rounded-2xl bg-[#e0fff0] text-black flex flex-row h-max space-x-10;
+
+  > div {
+    @apply flex-1;
+  }
+
+  .code {
+    .fileName {
+      @apply font-semibold text-sm font-mono mb-2;
+    }
+  }
+
+  .info {
+    > h1 {
+      @apply text-4xl font-bold leading-[3.25rem];
+    }
+
+    > h2 {
+      @apply my-8 leading-[2rem] text-gray-700;
+    }
+
+    .externalButton {
+      @apply px-10 py-4 bg-emerald-300 rounded-full text-black text-xs transition hover:bg-fuchsia-400;
+    }
+  }
+}
+
+/** Buttons **/
+.lightBlueButton {
+  @apply shadow-lg px-8 py-4 rounded-full bg-blueB text-white text-sm font-semibold hover:bg-blueC transition;
+}
+
+.subtleText {
+  @apply uppercase text-gray-400 text-xs font-semibold;
 }

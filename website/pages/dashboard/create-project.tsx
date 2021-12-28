@@ -2,6 +2,7 @@ import { FormSection } from 'components/FormSection';
 import { ContentContainer } from 'components/misc/ContentContainer';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import styles from 'styles/dashboard/create-project.module.scss';
 
 interface FrameworkSelectionState {
   nextjs: boolean;
@@ -80,16 +81,12 @@ export default function CreateProject() {
             </div>
           </FormSection>
 
-          <div className="mt-16 bg-gradient-to-tr from-blueA to-blueB p-12 rounded shadow-lg">
-            <h1 className="text-3xl text-white font-bold">
-              Bring your idea to life
-            </h1>
-            <h2 className="text-white mt-2">For every day, is a new day.</h2>
+          <div className={styles.submitContainer}>
+            <h1>Bring your idea to life</h1>
 
-            <button
-              type="submit"
-              className="mt-6 bg-yellowB font-medium rounded-full px-8 py-2 text-sm"
-            >
+            <h2>For every day, is a new day.</h2>
+
+            <button type="submit" className={styles.submitButton}>
               Create project
             </button>
           </div>

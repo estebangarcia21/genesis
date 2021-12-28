@@ -1,0 +1,15 @@
+.submitContainer {
+  @apply mt-16 bg-gradient-to-tr from-blueA to-blueB p-12 rounded shadow-lg;
+
+  > h1 {
+    @apply text-white text-3xl font-bold;
+  }
+
+  > h2 {
+    @apply text-white text-sm my-2;
+  }
+
+  .submitButton {
+    @apply mt-6 bg-yellowB font-medium rounded-full px-8 py-2 text-sm;
+  }
+}

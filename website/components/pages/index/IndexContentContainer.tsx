@@ -1,10 +1,9 @@
-import React, { CSSProperties } from 'react';
 import {
   ContentContainer,
   ContentContainerProps
 } from 'components/misc/ContentContainer';
+import React, { CSSProperties } from 'react';
 import { Children } from 'utils/componentTypes';
-import styles from 'styles/index.module.scss';
 
 const HORIZONTAL_MARGIN = 64;
 

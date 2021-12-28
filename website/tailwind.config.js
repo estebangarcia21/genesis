@@ -1,8 +1,9 @@
 module.exports = {
-  mode: 'jit',
+  mode: 'JIT',
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
+    './components/**/*.{js,ts,jsx,tsx}',
+    './styles/**/*.{css,scss,sass}'
   ],
   theme: {
     extend: {
