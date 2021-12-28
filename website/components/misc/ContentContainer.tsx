@@ -1,15 +1,25 @@
-export interface ContentContainerProps {
-  className?: string;
+import { CSSProperties } from 'react';
+import { Children } from 'utils/componentTypes';
+
+export interface ContentContainerProps extends Children {
   tag?: keyof JSX.IntrinsicElements;
-  children: React.ReactNode;
+  className?: string;
+  style?: CSSProperties;
 }
 
 export function ContentContainer({
   children,
   className,
+  style,
   tag: Tag = 'div'
 }: ContentContainerProps) {
-  const display = <Tag className="mx-auto max-w-6xl px-8">{children}</Tag>;
+  const display = <Tag className="mx-auto max-w-7xl px-8">{children}</Tag>;
 
-  return className ? <div className={className}>{display}</div> : display;
+  return className || style ? (
+    <div className={className} style={style}>
+      {display}
+    </div>
+  ) : (
+    display
+  );
 }
