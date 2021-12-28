@@ -1,0 +1,11 @@
+.container {
+  @apply py-8 border-b-2;
+}
+
+.links {
+  @apply flex flex-row;
+
+  li a {
+    @apply font-medium text-gray-600;
+  }
+}
