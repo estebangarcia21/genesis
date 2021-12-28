@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -22,16 +22,20 @@ a {
 }
 
 h1,
+button {
+  font-family: 'Readex Pro', sans-serif;
+  /* @apply tracking-[0.025em]; */
+}
+
 h2,
 h3,
 h4,
 h5,
-button {
+a {
   font-family: 'Readex Pro', sans-serif;
 }
 
 p,
-a,
 input {
   font-family: 'Open Sans', sans-serif;
 }

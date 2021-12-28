@@ -11,7 +11,11 @@ module.exports = {
         blueB: '#5338FF',
         blueC: '#3B1EFA',
         yellowA: '#AD9600',
-        yellowB: '#FADD1E'
+        yellowB: '#FADD1E',
+        blueGray: '#333'
+      },
+      fontFamily: {
+        mono: ['Jetbrains Mono', 'monospace']
       }
     }
   },
