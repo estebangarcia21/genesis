@@ -1,10 +1,10 @@
 import { Children } from 'utils/componentTypes';
 import Image from 'next/image';
-import responsiveImageProps from 'utils/responsiveImageProps';
 import styles from './FormSection.module.scss';
 import { IoIosArrowDropright } from '@react-icons/all-files/io/IoIosArrowDropright';
 import { GrCheckbox } from '@react-icons/all-files/gr/GrCheckbox';
 import { GrCheckboxSelected } from '@react-icons/all-files/gr/GrCheckboxSelected';
+import { ResponsiveImage } from './ResponsiveImage';
 
 export interface FormSectionProps extends Children {
   name: string;
@@ -82,11 +82,7 @@ FormSection.CardSelector = function FormSectionCardSelector({
       }`}
       onClick={() => setSelected && setSelected()}
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        {...responsiveImageProps({ height: '35%' })}
-      />
+      <ResponsiveImage src={imageSrc} alt={imageAlt} height="35%" />
 
       <div className="text-center mt-3">
         <h1 className="text-lg font-medium">{name}</h1>

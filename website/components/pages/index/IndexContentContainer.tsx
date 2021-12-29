@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import {
   ContentContainer,
   ContentContainerProps,
@@ -6,7 +7,7 @@ import {
 import React, { CSSProperties } from 'react';
 import { Children } from 'utils/componentTypes';
 
-const HORIZONTAL_MARGIN = 64;
+const HORIZONTAL_MARGIN = 128;
 const MAX_WIDTH = CONTENT_MAX_WIDTH + HORIZONTAL_MARGIN * 2;
 
 export interface IndexContentContainerProps extends ContentContainerProps {
@@ -20,6 +21,8 @@ export interface IndexContentContainerProps extends ContentContainerProps {
     | ((props: IndexContentContainerChildFnProps) => React.ReactNode);
   usePadding?: boolean;
   verticalPadding?: number;
+  childClassname?: string;
+  ignoreDefaultYSpacing?: boolean;
 }
 
 export type IndexContentContainerChildFnProps = {
@@ -27,11 +30,13 @@ export type IndexContentContainerChildFnProps = {
 };
 
 export function IndexContentContainer({
-  className = 'py-16',
+  className,
   tag = 'section',
   children,
   verticalPadding = 0,
   usePadding,
+  childClassname,
+  ignoreDefaultYSpacing,
   ...props
 }: IndexContentContainerProps) {
   const childIsFn = typeof children === 'function';
@@ -48,11 +53,13 @@ export function IndexContentContainer({
     );
   }
 
+  const ySpacingClassname = ignoreDefaultYSpacing ? '' : 'py-16';
+
   return (
     <ContentContainer
       maxWidth={MAX_WIDTH}
       tag={tag}
-      className={className}
+      className={classNames(className, ySpacingClassname)}
       {...props}
     >
       {usePadding && childIsFn ? (
@@ -74,6 +81,7 @@ export function IndexContentContainer({
                   marginRight: HORIZONTAL_MARGIN
                 }
           }
+          className={childClassname}
         >
           {children}
         </div>
