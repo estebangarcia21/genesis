@@ -43,10 +43,8 @@
     @apply flex-1;
   }
 
-  .code {
-    .fileName {
-      @apply font-semibold text-sm font-mono mb-2;
-    }
+  .fileName {
+    @apply font-semibold text-sm font-mono mb-2;
   }
 
   .info {

@@ -16,7 +16,7 @@ module.exports = {
         blueGray: '#333'
       },
       fontFamily: {
-        mono: ['Jetbrains Mono', 'monospace']
+        mono: ['"Jetbrains Mono"', 'monospace']
       }
     }
   },
