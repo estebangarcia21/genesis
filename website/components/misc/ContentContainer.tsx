@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { Children } from 'utils/componentTypes';
 
-const DEFAULT_MAX_WIDTH = 1152;
+export const CONTENT_MAX_WIDTH = 1152;
 
 export interface ContentContainerProps extends Children {
   tag?: keyof JSX.IntrinsicElements;
@@ -20,7 +20,7 @@ export function ContentContainer({
   const display = (
     <Tag
       className="mx-auto px-8"
-      style={{ maxWidth: maxWidth ? maxWidth : DEFAULT_MAX_WIDTH }}
+      style={{ maxWidth: maxWidth ? maxWidth : CONTENT_MAX_WIDTH }}
     >
       {children}
     </Tag>

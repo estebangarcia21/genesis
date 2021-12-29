@@ -1,11 +1,13 @@
 import {
   ContentContainer,
-  ContentContainerProps
+  ContentContainerProps,
+  CONTENT_MAX_WIDTH
 } from 'components/misc/ContentContainer';
 import React, { CSSProperties } from 'react';
 import { Children } from 'utils/componentTypes';
 
 const HORIZONTAL_MARGIN = 64;
+const MAX_WIDTH = CONTENT_MAX_WIDTH + HORIZONTAL_MARGIN * 2;
 
 export interface IndexContentContainerProps extends ContentContainerProps {
   /**
@@ -47,7 +49,12 @@ export function IndexContentContainer({
   }
 
   return (
-    <ContentContainer tag={tag} className={className} {...props}>
+    <ContentContainer
+      maxWidth={MAX_WIDTH}
+      tag={tag}
+      className={className}
+      {...props}
+    >
       {usePadding && childIsFn ? (
         children({
           paddingStyles: {
