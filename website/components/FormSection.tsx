@@ -85,7 +85,7 @@ FormSection.CardSelector = function FormSectionCardSelector({
       <Image
         src={imageSrc}
         alt={imageAlt}
-        {...responsiveImageProps({ height: '8%' })}
+        {...responsiveImageProps({ height: '35%' })}
       />
 
       <div className="text-center mt-3">
