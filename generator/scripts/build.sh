@@ -1,1 +1,1 @@
-wasm-pack build --target no-modules
+wasm-pack build --target nodejs
