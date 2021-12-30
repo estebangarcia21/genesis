@@ -1,6 +1,8 @@
 import { AiFillHeart } from '@react-icons/all-files/ai/AiFillHeart';
 import { IndexContentContainer } from 'components/pages/index/IndexContentContainer';
+import { IndexFooter } from 'components/pages/index/IndexFooter';
 import { IndexNavbar } from 'components/pages/index/IndexNavbar';
+import { IndexWhySection } from 'components/pages/index/IndexWhySection';
 import { ResponsiveImage } from 'components/ResponsiveImage';
 import type { NextPage } from 'next';
 import styles from 'styles/index.module.scss';
@@ -13,7 +15,7 @@ const Home: NextPage = () => {
       <main>
         <IndexNavbar />
 
-        <IndexContentContainer className={styles.header}>
+        <IndexContentContainer outerClassName={styles.header}>
           <div className={styles.container}>
             <div className={styles.content}>
               <h1>Quickstart your project ideas.</h1>
@@ -40,42 +42,7 @@ const Home: NextPage = () => {
           </div>
         </IndexContentContainer>
 
-        <IndexContentContainer
-          ignoreDefaultYSpacing
-          childClassname={styles.frameworksContainer}
-        >
-          <div className={styles.title}>
-            <h1>
-              We{' '}
-              <span className={styles.icon}>
-                <AiFillHeart aria-label="love" />
-              </span>{' '}
-              open source
-            </h1>
-          </div>
-
-          <h2 className={styles.subtitle}>
-            Bring your ideas to life using the best open source frameworks by
-            the community.
-          </h2>
-
-          <div className={styles.frameworksImages}>
-            <ResponsiveImage
-              parentTag="div"
-              src="/images/frameworks/nextjs-circle.svg"
-              alt=""
-              height={35}
-              width={35}
-            />
-            <ResponsiveImage
-              parentTag="div"
-              src="/images/frameworks/rest-api.png"
-              alt=""
-              height={35}
-              width={35}
-            />
-          </div>
-        </IndexContentContainer>
+        <IndexWhySection />
 
         <IndexContentContainer usePadding verticalPadding={76}>
           {({ paddingStyles }) => (
@@ -102,6 +69,46 @@ const Home: NextPage = () => {
             </div>
           )}
         </IndexContentContainer>
+
+        <IndexContentContainer
+          ignoreDefaultYPadding
+          className={styles.frameworksContainer}
+        >
+          <div className={styles.title}>
+            <h1>
+              We{' '}
+              <span className={styles.icon}>
+                <AiFillHeart aria-label="love" />
+              </span>{' '}
+              open source
+            </h1>
+          </div>
+
+          <h2 className={styles.subtitle}>
+            We strive to empower developers to build the best possible. <br />
+            As such, we are constantly working on supporting the most popular
+            open source technologies.
+          </h2>
+
+          <div className={styles.frameworksImages}>
+            <ResponsiveImage
+              parentTag="div"
+              src="/images/frameworks/nextjs-circle.svg"
+              alt=""
+              height={35}
+              width={35}
+            />
+            <ResponsiveImage
+              parentTag="div"
+              src="/images/frameworks/rest-api.png"
+              alt=""
+              height={35}
+              width={35}
+            />
+          </div>
+        </IndexContentContainer>
+
+        <IndexFooter />
       </main>
     </div>
   );

@@ -1,11 +1,47 @@
-.container {
-  @apply py-8 border-b-2;
+.border {
+  @apply border-b;
 }
 
-.links {
-  @apply flex flex-row;
+.navHeight {
+  @apply flex flex-col justify-center h-24;
+}
 
-  li a {
-    @apply font-medium text-gray-600;
+@mixin contentContainer() {
+  @apply flex flex-row items-center;
+}
+
+.linksContainer {
+  @apply flex flex-row justify-between;
+
+  > * {
+    @apply flex-1;
+  }
+
+  .links {
+    @include contentContainer();
+    @apply w-full space-x-12;
+  }
+}
+
+.buttonsContainer {
+  @include contentContainer();
+  @apply justify-end space-x-6;
+
+  @mixin buttonBase() {
+    @apply border-2 border-blueB text-sm text-white px-8 py-2.5 transition font-semibold rounded-full;
+  }
+
+  .loginButton {
+    @include buttonBase();
+
+    @apply bg-blueB;
+    @apply hover:bg-blueC;
+  }
+
+  .signupButton {
+    @include buttonBase();
+
+    @apply text-blueB;
+    @apply hover:bg-indigo-50;
   }
 }

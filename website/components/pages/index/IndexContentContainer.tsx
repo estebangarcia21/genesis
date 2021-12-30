@@ -7,8 +7,7 @@ import {
 import React, { CSSProperties } from 'react';
 import { Children } from 'utils/componentTypes';
 
-const HORIZONTAL_MARGIN = 128;
-const MAX_WIDTH = CONTENT_MAX_WIDTH + HORIZONTAL_MARGIN * 2;
+const DEFAULT_HORIZONTAL_SPACE = 128;
 
 export interface IndexContentContainerProps extends ContentContainerProps {
   /**
@@ -20,23 +19,26 @@ export interface IndexContentContainerProps extends ContentContainerProps {
     | Children['children']
     | ((props: IndexContentContainerChildFnProps) => React.ReactNode);
   usePadding?: boolean;
+  horizontalPadding?: number | ((defaultPadding: number) => number);
   verticalPadding?: number;
-  childClassname?: string;
-  ignoreDefaultYSpacing?: boolean;
+  className?: string;
+  outerClassName?: string;
+  ignoreDefaultYPadding?: boolean;
 }
 
-export type IndexContentContainerChildFnProps = {
+export interface IndexContentContainerChildFnProps {
   paddingStyles: Partial<CSSProperties>;
-};
+}
 
 export function IndexContentContainer({
-  className,
+  outerClassName,
   tag = 'section',
   children,
+  horizontalPadding = DEFAULT_HORIZONTAL_SPACE,
   verticalPadding = 0,
   usePadding,
-  childClassname,
-  ignoreDefaultYSpacing,
+  className,
+  ignoreDefaultYPadding,
   ...props
 }: IndexContentContainerProps) {
   const childIsFn = typeof children === 'function';
@@ -52,21 +54,25 @@ export function IndexContentContainer({
       'The children prop is a function, but the usePadding prop is not set.'
     );
   }
+  const ySpacingClassName = ignoreDefaultYPadding ? '' : 'py-16';
 
-  const ySpacingClassname = ignoreDefaultYSpacing ? '' : 'py-16';
+  const horizontalPaddingValue =
+    typeof horizontalPadding === 'function'
+      ? horizontalPadding(DEFAULT_HORIZONTAL_SPACE)
+      : horizontalPadding;
 
   return (
     <ContentContainer
-      maxWidth={MAX_WIDTH}
+      maxWidth={CONTENT_MAX_WIDTH + horizontalPaddingValue * 2}
       tag={tag}
-      className={classNames(className, ySpacingClassname)}
+      className={classNames(outerClassName, ySpacingClassName)}
       {...props}
     >
       {usePadding && childIsFn ? (
         children({
           paddingStyles: {
-            paddingLeft: HORIZONTAL_MARGIN,
-            paddingRight: HORIZONTAL_MARGIN,
+            paddingLeft: horizontalPaddingValue,
+            paddingRight: horizontalPaddingValue,
             paddingTop: verticalPadding,
             paddingBottom: verticalPadding
           }
@@ -77,11 +83,11 @@ export function IndexContentContainer({
             usePadding
               ? undefined
               : {
-                  marginLeft: HORIZONTAL_MARGIN,
-                  marginRight: HORIZONTAL_MARGIN
+                  marginLeft: horizontalPaddingValue,
+                  marginRight: horizontalPaddingValue
                 }
           }
-          className={childClassname}
+          className={className}
         >
           {children}
         </div>

@@ -69,13 +69,13 @@
       @apply text-2xl font-semibold leading-[3.25rem];
 
       .icon {
-        @apply text-red-600 mx-2;
+      @apply text-red-600 mx-2;
       }
     }
   }
 
   .subtitle {
-    @apply text-base text-gray-500 mx-auto max-w-md leading-[1.75rem];
+    @apply text-sm text-gray-500 leading-[1.75rem];
   }
 
   .frameworksImages {
@@ -84,6 +84,31 @@
     > div {
       @apply inline-block m-4;
     }
+  }
+}
+
+.whyContainer {
+  @apply flex flex-row;
+
+  .textContainer {
+    flex: 1;
+
+    > h3 {
+      @apply uppercase text-rose-400 text-sm font-semibold;
+    }
+
+    > h1 {
+      @apply text-4xl font-semibold mt-2 max-w-sm leading-[3rem] text-blueGray;
+    }
+
+    > p {
+      @apply text-gray-700 mt-4 text-sm max-w-md leading-[1.6rem];
+    }
+  }
+
+  .stepsContainer {
+    flex: 1;
+    @apply flex flex-row space-x-8;
   }
 }
 

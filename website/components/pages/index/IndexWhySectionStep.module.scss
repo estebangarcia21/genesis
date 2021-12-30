@@ -1,0 +1,15 @@
+.container {
+  flex: 1;
+
+  > h3 {
+    @apply font-semibold text-lg w-12 h-12 rounded bg-rose-400 shadow-lg flex flex-col text-white items-center justify-center;
+  }
+
+  > h1 {
+    @apply mt-4 font-medium;
+  }
+
+  > p {
+    @apply text-sm text-gray-600 mt-2 leading-[1.6rem];
+  }
+}
