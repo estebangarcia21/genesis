@@ -2,5 +2,15 @@
   "name": "api",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "watch": "tsc -w & nodemon --quiet ./dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.15"
+  }
 }
