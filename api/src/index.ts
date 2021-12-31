@@ -1,10 +1,11 @@
-import express from 'express';
+import { ApolloServer } from 'apollo-server';
+import { schema } from './graphql';
 
 async function main() {
-  const app = express();
+  const server = new ApolloServer({ schema });
 
-  app.listen(3000, () => {
-    console.log('Listening on port 3000');
+  server.listen().then(({ url }) => {
+    console.log(`🚀 Server ready at ${url}`);
   });
 }
 
