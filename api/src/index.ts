@@ -1,12 +1,6 @@
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer } from 'apollo-server-lambda';
 import { schema } from './graphql';
 
-async function main() {
-  const server = new ApolloServer({ schema });
+const server = new ApolloServer({ schema });
 
-  server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
-  });
-}
-
-main().catch(console.log);
+export const handler = server.createHandler();

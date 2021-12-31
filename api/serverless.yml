@@ -1,0 +1,21 @@
+service: genesis-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  versionFunctions: false
+  region: us-east-1
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  graphql:
+    handler: dist/index.handler
+    events:
+      - http:
+          path: graphql
+          method: any
+          cors: true
+
+plugins:
+  - serverless-offline

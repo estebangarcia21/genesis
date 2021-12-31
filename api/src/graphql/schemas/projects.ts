@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server';
-import { generate } from '../../generatorWasmBindings';
+import { genesisGenerator } from '../../wasm';
 
 export const typeDefs = gql`
   type ProjectArtifact {
@@ -35,7 +35,7 @@ export const resolvers = {
   Mutation: {
     createRestApi: (_: any, { input: { schema } }: any) => {
       return {
-        base64: generate('express').toString(),
+        base64: genesisGenerator.generate('express').toString(),
         cloneEndpoint: 'https://clone.github.com'
       };
     }
