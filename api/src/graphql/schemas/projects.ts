@@ -1,26 +1,42 @@
 import { gql } from 'apollo-server';
+import { generate } from '../../generatorWasmBindings';
 
 export const typeDefs = gql`
-  type GeneratedProject {
-    framework: String
-    base64Content: String
+  type ProjectArtifact {
+    base64: String!
+    cloneEndpoint: String
+  }
+
+  input CreateRestApiInput {
+    """
+    The name of the API
+    """
+    name: String!
+    """
+    The description of the project
+    """
+    description: String
+    """
+    The schema for the API
+    """
+    schema: String
   }
 
   type Query {
-    projects: [GeneratedProject]
+    projects: [ProjectArtifact]
   }
 
   type Mutation {
-    generateProject: GeneratedProject!
+    createRestApi(input: CreateRestApiInput): ProjectArtifact
   }
 `;
 
 export const resolvers = {
   Mutation: {
-    generateProject: () => {
+    createRestApi: (_: any, { input: { schema } }: any) => {
       return {
-        framework: 'Yuh',
-        base64Content: '$xiug'
+        base64: generate('express').toString(),
+        cloneEndpoint: 'https://clone.github.com'
       };
     }
   }
