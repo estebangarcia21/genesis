@@ -1,6 +1,8 @@
 use super::framework::Framework;
 
-pub struct Express;
+pub struct Express {
+    pub port: u32,
+}
 
 impl Framework for Express {
     fn name(&self) -> &str {
