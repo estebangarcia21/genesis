@@ -35,7 +35,13 @@ export const resolvers = {
   Mutation: {
     createRestApi: (_: any, { input: { schema } }: any) => {
       return {
-        base64: genesisGenerator.generate('express').toString(),
+        base64: genesisGenerator
+          .generate_rest_api(
+            JSON.stringify({
+              port: 3000
+            })
+          )
+          .toString(),
         cloneEndpoint: 'https://clone.github.com'
       };
     }
