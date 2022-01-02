@@ -13,12 +13,19 @@ const Home: NextPage = () => {
       <title>Genesis</title>
 
       <main>
-        <IndexNavbar />
+        <IndexContentContainer
+          outerClassName={styles.header}
+          ignoreDefaultYPadding
+        >
+          <IndexNavbar />
 
-        <IndexContentContainer outerClassName={styles.header}>
           <div className={styles.container}>
             <div className={styles.content}>
-              <h1>Quickstart your project ideas.</h1>
+              <h1>
+                Build better.
+                <br />
+                Build faster.
+              </h1>
 
               <h2>
                 Genesis gives you the power to quickly get started on your
@@ -28,7 +35,7 @@ const Home: NextPage = () => {
 
               <div className={styles.buttons}>
                 <button className={styles.lightBlueButton}>
-                  Generate your project
+                  Build your API
                 </button>
 
                 <h2 className={styles.subtleText}>NO ACCOUNT NEEDED</h2>
@@ -37,7 +44,7 @@ const Home: NextPage = () => {
 
             <div className={styles.graphic}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/server.svg" alt="" />
+              <img src="/images/transact.svg" alt="" />
             </div>
           </div>
         </IndexContentContainer>

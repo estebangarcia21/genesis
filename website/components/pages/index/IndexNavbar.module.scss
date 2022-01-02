@@ -1,9 +1,5 @@
-.border {
-  @apply border-b;
-}
-
-.navHeight {
-  @apply flex flex-col justify-center h-24;
+.container {
+  @apply flex flex-col justify-center h-[5.5rem] mb-32;
 }
 
 @mixin contentContainer() {
@@ -28,20 +24,19 @@
   @apply justify-end space-x-6;
 
   @mixin buttonBase() {
-    @apply border-2 border-blueB text-sm text-white px-8 py-2.5 transition font-semibold rounded-full;
+    @apply border-2 border-blue-500 text-sm text-white px-8 py-2.5 transition font-semibold rounded;
   }
 
   .loginButton {
     @include buttonBase();
 
-    @apply bg-blueB;
-    @apply hover:bg-blueC;
+    @apply hover:bg-blue-500;
   }
 
   .signupButton {
     @include buttonBase();
 
-    @apply text-blueB;
-    @apply hover:bg-indigo-50;
+    @apply bg-blue-500;
+    @apply hover:bg-blue-600 hover:border-blue-600;
   }
 }

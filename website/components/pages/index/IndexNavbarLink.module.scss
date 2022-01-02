@@ -1,4 +1,4 @@
 .link {
-  @apply text-gray-800 font-semibold;
-  @apply hover:text-indigo-600;
+  @apply text-white font-medium;
+  @apply transition hover:text-blue-400;
 }

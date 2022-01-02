@@ -54,7 +54,7 @@ export function IndexContentContainer({
       'The children prop is a function, but the usePadding prop is not set.'
     );
   }
-  const ySpacingClassName = ignoreDefaultYPadding ? '' : 'py-16';
+  const ySpacingClassName = ignoreDefaultYPadding ? '' : 'pt-24';
 
   const horizontalPaddingValue =
     typeof horizontalPadding === 'function'

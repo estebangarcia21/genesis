@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   mode: 'JIT',
   content: [
@@ -8,6 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        ...colors,
         blueA: '#200AAD',
         blueB: '#5338FF',
         blueC: '#3B1EFA',

@@ -1,19 +1,21 @@
+import { ResponsiveImage } from 'components/ResponsiveImage';
 import styles from './IndexWhySectionStep.module.scss';
 
 export interface IndexWhySectionStepProps {
-  number: number;
+  imgSrc: string;
   title: string;
   description: string;
 }
 
 export function IndexWhySectionStep({
   description,
-  number,
-  title
+  title,
+  imgSrc
 }: IndexWhySectionStepProps) {
   return (
     <div className={styles.container}>
-      <h3>{number}</h3>
+      <ResponsiveImage src={imgSrc} alt="" width={100} height={100} />
+
       <h1>{title}</h1>
       <p>{description}</p>
     </div>

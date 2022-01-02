@@ -1,18 +1,21 @@
 import { IndexContentContainer } from './IndexContentContainer';
 import styles from './IndexFooter.module.scss';
-import { IndexFooterWave } from './IndexFooterWave';
 
 export function IndexFooter() {
   return (
-    <div className={styles.waveContainer}>
-      <IndexFooterWave />
+    <IndexContentContainer
+      tag="footer"
+      outerClassName={styles.footerContainer}
+      ignoreDefaultYPadding
+    >
+      <div className={styles.skewContainer}>
+        <div className="w-full bg-gradient-to-r from-blue-300 to-violet-300 h-2 -translate-y-1/2" />
+      </div>
 
-      <IndexContentContainer
-        tag="footer"
-        outerClassName={styles.footerContainer}
-      >
-        <h1>Footer</h1>
-      </IndexContentContainer>
-    </div>
+      <div className={styles.content}>
+        <h1>Genesis</h1>
+        <h2>The Platform for Rapid API Development</h2>
+      </div>
+    </IndexContentContainer>
   );
 }

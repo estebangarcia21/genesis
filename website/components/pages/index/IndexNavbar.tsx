@@ -5,12 +5,7 @@ import { IndexNavbarLink } from './IndexNavbarLink';
 
 export function IndexNavbar() {
   return (
-    <IndexContentContainer
-      className={styles.navHeight}
-      outerClassName={styles.border}
-      tag="nav"
-      ignoreDefaultYPadding
-    >
+    <nav className={styles.container}>
       <ul className={styles.linksContainer}>
         <ul className={styles.links}>
           <ResponsiveImage
@@ -27,10 +22,10 @@ export function IndexNavbar() {
         </ul>
 
         <div className={styles.buttonsContainer}>
-          <button className={styles.signupButton}>Sign up</button>
           <button className={styles.loginButton}>Log in</button>
+          <button className={styles.signupButton}>Sign up</button>
         </div>
       </ul>
-    </IndexContentContainer>
+    </nav>
   );
 }

@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;600;700&family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600;700;800&family=Readex+Pro:wght@200;300;400;500;600;700&family=Roboto+Slab:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 html,
 body {
@@ -21,8 +23,7 @@ a {
   box-sizing: border-box;
 }
 
-h1,
-button {
+h1 {
   font-family: 'Readex Pro', sans-serif;
   /* @apply tracking-[0.025em]; */
 }
@@ -31,11 +32,13 @@ h2,
 h3,
 h4,
 h5,
-a {
+a,
+button {
   font-family: 'Readex Pro', sans-serif;
 }
 
 p,
 input {
   font-family: 'Open Sans', sans-serif;
+  /* font-weight: 300; */
 }

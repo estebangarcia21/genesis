@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { Children } from 'utils/componentTypes';
 
-export const CONTENT_MAX_WIDTH = 1200;
+export const CONTENT_MAX_WIDTH = 1400;
 
 export interface ContentContainerProps extends Children {
   tag?: keyof JSX.IntrinsicElements;

@@ -3,22 +3,26 @@
 }
 
 .header {
-  @apply pt-36;
+  background-image: radial-gradient(
+    at 50% 0%,
+    rgb(49, 51, 83),
+    rgb(26, 28, 58)
+  );
+
+  @apply pb-44 pt-12;
 
   .container {
-    @apply flex flex-row space-x-24;
+    @apply flex flex-row items-center text-white space-x-36;
 
     .content {
       flex: 1;
 
       > h1 {
-        @include titleBase();
-
-        @apply text-5xl font-bold leading-[4rem] text-blueGray;
+        @apply text-6xl font-semibold leading-[5rem];
       }
 
       > h2 {
-        @apply mt-6 text-gray-600 leading-[2rem];
+        @apply mt-6 leading-[2rem];
       }
 
       .buttons {
@@ -27,13 +31,41 @@
     }
 
     .graphic {
-      flex: 1.35;
+      flex: 1;
     }
   }
 }
 
+.whyContainer {
+  @apply flex flex-col;
+
+  .textContainer {
+    flex: 1;
+
+    @apply text-center;
+
+    > h3 {
+      @apply uppercase text-blue-500 text-xs font-semibold font-mono tracking-[0.25rem];
+    }
+
+    > h1 {
+      @apply mx-auto text-5xl mt-2 max-w-2xl leading-[4rem] text-blueGray;
+    }
+
+    > p {
+      @apply mx-auto text-gray-700 mt-4 text-lg max-w-3xl leading-[2rem];
+    }
+  }
+
+  .stepsContainer {
+    flex: 1;
+
+    @apply mt-12 flex flex-row space-x-8;
+  }
+}
+
 .expressInfoContainer {
-  @apply rounded-2xl bg-[#e0fff0] text-black flex flex-row h-max space-x-10;
+  @apply rounded-2xl bg-[#e0edff] text-black flex flex-row h-max space-x-10;
 
   > div {
     @apply flex-1;
@@ -53,13 +85,13 @@
     }
 
     .externalButton {
-      @apply px-10 py-4 bg-emerald-300 rounded-full text-black text-xs transition hover:bg-emerald-400;
+      @apply px-10 py-4 bg-blue-300 rounded-full text-black text-xs transition hover:bg-blue-400;
     }
   }
 }
 
 .frameworksContainer {
-  @apply py-12 text-center;
+  @apply py-20 text-center;
 
   .title {
     > h1 {
@@ -69,7 +101,7 @@
       @apply text-2xl font-semibold leading-[3.25rem];
 
       .icon {
-      @apply text-red-600 mx-2;
+        @apply text-red-600 mx-2;
       }
     }
   }
@@ -87,34 +119,9 @@
   }
 }
 
-.whyContainer {
-  @apply flex flex-row;
-
-  .textContainer {
-    flex: 1;
-
-    > h3 {
-      @apply uppercase text-rose-400 text-sm font-semibold;
-    }
-
-    > h1 {
-      @apply text-4xl font-semibold mt-2 max-w-sm leading-[3rem] text-blueGray;
-    }
-
-    > p {
-      @apply text-gray-700 mt-4 text-sm max-w-md leading-[1.6rem];
-    }
-  }
-
-  .stepsContainer {
-    flex: 1;
-    @apply flex flex-row space-x-8;
-  }
-}
-
 /** Buttons **/
 .lightBlueButton {
-  @apply shadow-lg px-8 py-4 rounded-full bg-blueB text-white text-sm font-semibold hover:bg-blueC transition;
+  @apply shadow-lg px-8 py-4 rounded bg-blueB text-white text-sm font-semibold hover:bg-blueC transition;
 }
 
 .subtleText {
