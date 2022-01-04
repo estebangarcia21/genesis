@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const screenBreakpoints = require('./utils/screenBreakpoints');
 
 module.exports = {
   mode: 'JIT',
@@ -19,9 +20,20 @@ module.exports = {
         blueGray: '#333'
       },
       fontFamily: {
-        mono: ['"Jetbrains Mono"', 'monospace']
+        mono: ['"Fira Code"', 'monospace']
       }
-    }
+    },
+    screens: transformScreenBreakPoints(screenBreakpoints)
   },
   plugins: []
 };
+
+function transformScreenBreakPoints(bps) {
+  const transformed = {};
+
+  for (const key of Object.keys(bps)) {
+    transformed[key] = `${bps[key]}px`;
+  }
+
+  return transformed;
+}
