@@ -27,15 +27,15 @@ const Home: NextPage = () => {
           <div className={styles.container}>
             <div className={styles.content}>
               <h1>
-                Build better.
+                Build smarter.
                 <br />
-                Build faster.
+                Build better.
               </h1>
 
               <h2>
                 Genesis gives you the power to quickly get started on your
-                ideas. Ignore the hours-long setup and get right to work with
-                your generated project.
+                APIs. Ignore the long tedious setup and get right to work with
+                the tools Genesis provides.
               </h2>
 
               <div className={styles.buttons}>
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
         <IndexWhySection />
         <IndexFrameworkSpotlight
           title="Scale up with a RESTful API using Express"
-          description="Generate all the basic API requirements for an ExpressJS application without the setup and boilerplate."
+          description="Generate all the necessary API routes for your program model using the Genesis API SDL. Add authorization and validation to your API routes in just a few lines of code."
           imgSrc={expressCodeImagePath}
           category="Project development tools"
         />
@@ -72,8 +72,8 @@ const Home: NextPage = () => {
           </div>
 
           <h2 className={styles.subtitle}>
-            We strive to empower developers to build the best possible. <br />
-            As such, we are constantly working on supporting the most popular
+            We strive to empower developers to build with the best possible productivity. <br />
+            As such, we are constantly working on supporting the latest
             open source technologies.
           </h2>
 

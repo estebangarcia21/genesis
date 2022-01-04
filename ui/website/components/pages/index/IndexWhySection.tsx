@@ -8,11 +8,11 @@ export function IndexWhySection() {
       <div className={styles.textContainer}>
         <h3>Why Genesis?</h3>
 
-        <h1>Elimate the burden of long boilerplate in APIs.</h1>
+        <h1>Eliminate the repetitiveness in your APIs.</h1>
 
         <p>
-          Developers often waste time hours on boilerplate code. Genesis gives
-          you the power to quickly get started on your ideas.
+          API development is a tedious and repetitive process.
+          Genesis gives you the power to quickly get started on your APIs.
         </p>
       </div>
 

@@ -14,7 +14,9 @@
     }
 
     > p {
-      @apply mx-auto text-gray-700 mt-4 md:text-lg max-w-3xl leading-[2rem];
+      @apply mx-auto text-gray-700 mt-4 md:text-lg max-w-3xl;
+
+      line-height: 34px;
     }
   }
 
