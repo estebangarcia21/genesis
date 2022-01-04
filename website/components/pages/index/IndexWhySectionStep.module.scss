@@ -1,7 +1,7 @@
 .container {
   flex: 1;
 
-  @apply text-center;
+  @apply text-center m-4;
 
   > h3 {
     @apply mx-auto font-semibold text-lg w-12 h-12 rounded bg-blue-400 shadow-lg flex flex-col text-white items-center justify-center;

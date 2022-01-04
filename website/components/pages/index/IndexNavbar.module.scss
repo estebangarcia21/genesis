@@ -1,42 +1,101 @@
+@mixin linkStyles($textColor) {
+  color: $textColor;
+  @apply font-medium;
+  @apply transition hover:text-blue-400;
+}
+
 .container {
-  @apply flex flex-col justify-center h-[5.5rem] mb-32;
+  height: 90px;
+
+  @apply lg:mb-32;
 }
 
-@mixin contentContainer() {
-  @apply flex flex-row items-center;
-}
+/** Switch nav views at TailwindCSS breakpoint: md **/
+.mobileContainer {
+  @apply flex flex-row justify-end h-full items-center lg:hidden;
 
-.linksContainer {
-  @apply flex flex-row justify-between;
+  .menuIcon {
+    $size: 32px;
 
-  > * {
-    @apply flex-1;
+    margin-left: auto;
+    width: $size;
+    height: $size;
+
+    fill: white;
+
+    cursor: pointer;
   }
+
+  .exitIcon {
+    $size: 32px;
+
+    width: $size;
+    height: $size;
+
+    fill: black;
+    @apply transition hover:fill-indigo-500;
+
+    cursor: pointer;
+  }
+
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    padding: 32px;
+
+    background-color: white;
+
+    @apply shadow-2xl rounded-b-xl;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    a {
+      display: inline-block;
+      margin-bottom: 12px;
+
+      @include linkStyles(black);
+    }
+  }
+}
+
+.desktopContainer {
+  @apply hidden lg:flex flex-row justify-between;
 
   .links {
-    @include contentContainer();
-    @apply w-full space-x-12;
-  }
-}
+    flex: 1;
 
-.buttonsContainer {
-  @include contentContainer();
-  @apply justify-end space-x-6;
+    @apply flex flex-row items-center space-x-12;
 
-  @mixin buttonBase() {
-    @apply border-2 border-blue-500 text-sm text-white px-8 py-2.5 transition font-semibold rounded;
+    a {
+      @include linkStyles(white);
+    }
   }
 
-  .loginButton {
-    @include buttonBase();
+  .buttonsContainer {
+    flex: 1;
 
-    @apply hover:bg-blue-500;
-  }
+    @apply flex flex-row justify-end space-x-6;
 
-  .signupButton {
-    @include buttonBase();
+    @mixin buttonBase() {
+      @apply border-2 border-blue-500 text-sm text-white px-8 py-2.5 transition font-semibold rounded;
+    }
 
-    @apply bg-blue-500;
-    @apply hover:bg-blue-600 hover:border-blue-600;
+    .loginButton {
+      @include buttonBase();
+
+      @apply hover:bg-blue-500;
+    }
+
+    .signupButton {
+      @include buttonBase();
+
+      @apply bg-blue-500;
+      @apply hover:bg-blue-600 hover:border-blue-600;
+    }
   }
 }

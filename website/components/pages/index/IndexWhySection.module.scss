@@ -1,0 +1,28 @@
+.container {
+  .textContainer {
+    flex: 1;
+
+    @apply text-center;
+
+    > h3 {
+      @apply uppercase text-blue-500 text-xs font-semibold font-mono tracking-[0.25rem];
+    }
+
+    > h1 {
+      @apply mx-auto mt-2 max-w-2xl text-blueGray;
+      @apply text-4xl leading-[3.5rem] md:text-5xl md:leading-[4rem];
+    }
+
+    > p {
+      @apply mx-auto text-gray-700 mt-4 md:text-lg max-w-3xl leading-[2rem];
+    }
+  }
+
+  .stepsContainer {
+    flex: 1;
+
+    @apply mt-12;
+
+    @apply flex flex-col md:flex-row;
+  }
+}

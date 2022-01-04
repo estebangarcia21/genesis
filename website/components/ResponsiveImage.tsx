@@ -1,29 +1,23 @@
 import type { ImageProps } from 'next/image';
 import Image from 'next/image';
-import { CSSProperties } from 'react';
 
-interface ResponsiveImageProps {
-  /**
-   * Static SVG imports are typed as any.
-   */
-  src: string | StaticImageData | any;
-  alt: string;
+interface ResponsiveImageProps
+  extends Omit<ImageProps, 'layout' | 'objectFit' | 'height' | 'width'> {
   width?: ImageProps['width'];
   height?: ImageProps['height'];
   parentTag?: keyof JSX.IntrinsicElements;
 }
 
 export function ResponsiveImage({
-  alt,
-  height = '100%',
+  parentTag: ParentTag,
   width = '100%',
-  src,
-  parentTag: ParentTag
+  height = '100%',
+  ...props
 }: ResponsiveImageProps) {
   const img = (
+    // eslint-disable-next-line jsx-a11y/alt-text
     <Image
-      src={src}
-      alt={alt}
+      {...props}
       width={width}
       height={height}
       layout="fixed"

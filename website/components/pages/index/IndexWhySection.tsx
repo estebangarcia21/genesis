@@ -1,14 +1,14 @@
-import styles from 'styles/index.module.scss';
 import { IndexContentContainer } from './IndexContentContainer';
+import styles from './IndexWhySection.module.scss';
 import { IndexWhySectionStep } from './IndexWhySectionStep';
 
 export function IndexWhySection() {
   return (
-    <IndexContentContainer className={styles.whyContainer}>
+    <IndexContentContainer className={styles.container}>
       <div className={styles.textContainer}>
         <h3>Why Genesis?</h3>
 
-        <h1 className="">Elimate the burden of long boilerplate in APIs.</h1>
+        <h1>Elimate the burden of long boilerplate in APIs.</h1>
 
         <p>
           Developers often waste time hours on boilerplate code. Genesis gives

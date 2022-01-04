@@ -3,7 +3,7 @@ $bgColor: rgb(26, 28, 58);
 .footerContainer {
   background-color: $bgColor;
 
-  @apply py-24 relative mt-20;
+  @apply py-24 relative md:mt-20;
 
   .content {
     @apply relative z-50;

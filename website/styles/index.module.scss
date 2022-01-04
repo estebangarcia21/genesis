@@ -9,83 +9,50 @@
     rgb(26, 28, 58)
   );
 
-  @apply pb-44 pt-12;
+  @apply pb-12 lg:pb-44 lg:pt-12;
 
   .container {
-    @apply flex flex-row items-center text-white space-x-36;
+    @apply my-12 lg:my-0 flex flex-col lg:flex-row items-center text-white space-x-36;
 
     .content {
       flex: 1;
 
       > h1 {
-        @apply text-6xl font-semibold leading-[5rem];
+        @apply font-semibold;
+
+        @apply text-5xl sm:text-6xl;
+        @apply text-center md:text-left;
+
+        line-height: 5rem;
       }
 
       > h2 {
         @apply mt-6 leading-[2rem];
+
+        @apply text-center sm:text-left;
+        @apply mx-auto sm:mx-0;
       }
 
       .buttons {
-        @apply flex flex-row items-center space-x-6 mt-10;
+        @apply flex-col flex items-center;
+        @apply md:flex-row md:space-x-6 mt-10;
+
+        .button {
+          @apply shadow-lg px-8 py-4 rounded bg-blueB text-white text-sm font-semibold hover:bg-blueC transition;
+          @apply w-full md:w-auto;
+        }
+
+        .subtleText {
+          @apply uppercase text-gray-400 text-xs font-semibold;
+          @apply mt-6 md:mt-0;
+        }
       }
     }
 
     .graphic {
       flex: 1;
-    }
-  }
-}
 
-.whyContainer {
-  @apply flex flex-col;
-
-  .textContainer {
-    flex: 1;
-
-    @apply text-center;
-
-    > h3 {
-      @apply uppercase text-blue-500 text-xs font-semibold font-mono tracking-[0.25rem];
-    }
-
-    > h1 {
-      @apply mx-auto text-5xl mt-2 max-w-2xl leading-[4rem] text-blueGray;
-    }
-
-    > p {
-      @apply mx-auto text-gray-700 mt-4 text-lg max-w-3xl leading-[2rem];
-    }
-  }
-
-  .stepsContainer {
-    flex: 1;
-
-    @apply mt-12 flex flex-row space-x-8;
-  }
-}
-
-.expressInfoContainer {
-  @apply rounded-2xl bg-[#e0edff] text-black flex flex-row h-max space-x-10;
-
-  > div {
-    @apply flex-1;
-  }
-
-  .fileName {
-    @apply font-semibold text-sm font-mono mb-2;
-  }
-
-  .info {
-    > h1 {
-      @apply text-4xl font-bold leading-[3.25rem];
-    }
-
-    > h2 {
-      @apply my-8 leading-[2rem] text-gray-700;
-    }
-
-    .externalButton {
-      @apply px-10 py-4 bg-blue-300 rounded-full text-black text-xs transition hover:bg-blue-400;
+      @apply hidden lg:block;
     }
   }
 }
@@ -117,13 +84,4 @@
       @apply inline-block m-4;
     }
   }
-}
-
-/** Buttons **/
-.lightBlueButton {
-  @apply shadow-lg px-8 py-4 rounded bg-blueB text-white text-sm font-semibold hover:bg-blueC transition;
-}
-
-.subtleText {
-  @apply uppercase text-gray-400 text-xs font-semibold;
 }
