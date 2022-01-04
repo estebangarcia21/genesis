@@ -1,6 +1,7 @@
 {
   "name": "website",
   "private": true,
+  "main": "./dist/index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
