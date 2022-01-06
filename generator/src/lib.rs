@@ -1,15 +1,16 @@
-mod api_generator;
+mod generator;
+mod generators;
+mod templates;
 
 use wasm_bindgen::prelude::wasm_bindgen;
 
-use crate::api_generator::{ApiGenerator, GenerationOptions};
-
-/// Generates a REST API using ExpressJS.
+/// Generates a containerized REST API using ExpressJS.
 ///
-/// Retruns a JSON string representing a serialized `ApiGeneratedArtifact`.
+/// Returns a JSON string representing a serialized `ApiGeneratedArtifact`.
 ///
 /// ## Arguments
 ///
+/// * `generator` - A string representing the generator to use for the API.
 /// * `opts` - A JSON string representing the options for the REST API.
 /// View the `Express` struct in the `frameworks` module for the JSON shape.
 ///
@@ -23,9 +24,11 @@ use crate::api_generator::{ApiGenerator, GenerationOptions};
 /// genesisGenerator.generate_rest_api(JSON.stringify(opts));
 /// ```
 #[wasm_bindgen]
-pub fn generate_rest_api(_opts: &str) -> String {
-    api_generator::Express { port: 3000 }.generate(GenerationOptions { ts: false });
+pub fn generate_express_api(_opts: &str) -> String {
+    todo!();
+}
 
-    // Deserialize express struct from opts string
+#[wasm_bindgen]
+pub fn generate_serverless_express_api(_opts: &str) -> String {
     todo!();
 }

@@ -1,0 +1,21 @@
+{
+  "name": "%PROJECT_NAME%",
+  "version": "1.0.0",
+  "private": "true",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc -w & sls offline --stage dev"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^8.3.1",
+    "apollo-server": "^3.6.0",
+    "apollo-server-lambda": "^3.6.0",
+    "express": "^4.17.2",
+    "graphql": "^16.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.15",
+    "serverless-offline": "^8.3.1"
+  }
+}
