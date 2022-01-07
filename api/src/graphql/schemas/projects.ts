@@ -2,9 +2,13 @@ import { gql } from 'apollo-server';
 import { genesisGenerator } from '../../wasm';
 
 export const typeDefs = gql`
-  type ProjectArtifact {
-    base64: String!
-    cloneEndpoint: String
+  type Artifact {
+    source: String!
+    path: String
+  }
+
+  type CreateRestApiOutput {
+    artifacts: [Artifact]!
   }
 
   input CreateRestApiInput {
@@ -17,31 +21,31 @@ export const typeDefs = gql`
     """
     description: String
     """
+    Port to run the server on
+    """
+    port: Int!
+    """
     The schema for the API
     """
     schema: String
   }
 
   type Query {
-    projects: [ProjectArtifact]
+    projects: [Artifact]
   }
 
   type Mutation {
-    createRestApi(input: CreateRestApiInput): ProjectArtifact
+    createRestApi(input: CreateRestApiInput): CreateRestApiOutput
   }
 `;
 
 export const resolvers = {
   Mutation: {
-    createRestApi: (_: any, { input: { schema } }: any) => {
+    createRestApi: (_: any, { input: { name, port } }: any) => {
       return {
-        base64: genesisGenerator
-          .generate_rest_api(
-            JSON.stringify({
-              port: 3000
-            })
-          )
-          .toString(),
+        artifacts: JSON.parse(
+          genesisGenerator.generate_express_api(JSON.stringify({ name, port }))
+        ),
         cloneEndpoint: 'https://clone.github.com'
       };
     }
