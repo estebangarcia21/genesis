@@ -1,4 +1,5 @@
-use std::{collections::HashMap, path::Path};
+use serde::Serialize;
+use std::collections::HashMap;
 
 use regex::Regex;
 
@@ -11,22 +12,52 @@ impl TemplateAccumulator {
         Self { inner: Vec::new() }
     }
 
-    pub fn add(&mut self, templates: &mut Vec<Template>) {
-        self.inner.append(templates);
+    pub fn add_static(
+        &mut self,
+        static_templates: &[(&str, &str)],
+        interp: &HashMap<String, String>,
+    ) {
+        let mut templates: Vec<Template> = static_templates
+            .into_iter()
+            .map(|set| Template {
+                source: set.1.into(),
+                path: Some(set.0.into()),
+            })
+            .collect();
+
+        TemplateAccumulator::interpolate(&mut templates, interp);
+
+        self.inner.append(&mut templates);
     }
 
-    pub fn interpolate_all(&mut self, interpolation_legend: &HashMap<String, String>) {
-        for template in &mut self.inner {
-            template.interpolate(interpolation_legend);
-        }
+    pub fn add_dynamic<T>(
+        &mut self,
+        dynamic_template: T,
+        path: &str,
+        interp: &HashMap<String, String>,
+    ) where
+        T: Into<Template>,
+    {
+        let mut template: Template = dynamic_template.into();
+
+        template.path = Some(path.to_string());
+        template.interpolate(interp);
+
+        self.inner.push(template);
     }
 
     pub fn into_inner(self) -> Vec<Template> {
         self.inner
     }
+
+    fn interpolate(templates: &mut Vec<Template>, interp: &HashMap<String, String>) {
+        templates.iter_mut().for_each(|template| {
+            template.interpolate(interp);
+        });
+    }
 }
 
-#[derive(Debug)]
+#[derive(Serialize, Debug)]
 pub struct Template {
     pub source: String,
     pub path: Option<String>,
@@ -49,16 +80,6 @@ impl Template {
             self.source = re.replace_all(&self.source, new).to_string();
         }
     }
-
-    pub fn load_static_from_list(templates: &[(&str, &str)]) -> Vec<Template> {
-        templates
-            .into_iter()
-            .map(|set| Template {
-                source: set.1.into(),
-                path: Some(set.0.into()),
-            })
-            .collect()
-    }
 }
 
 impl From<String> for Template {
@@ -66,6 +87,7 @@ impl From<String> for Template {
         Template::new(source.into(), None)
     }
 }
+
 #[cfg(test)]
 mod test {
     use crate::interpolation_struct;
@@ -74,14 +96,14 @@ mod test {
 
     #[test]
     fn test_interpolate() {
-        interpolation_struct! { |Interpolation| NAME };
+        interpolation_struct! { |Interpolation| name };
 
         let mut template = Template::from("Hello %NAME%".to_string());
         let new = "world";
 
         template.interpolate(
             &Interpolation {
-                NAME: new.to_string(),
+                name: new.to_string(),
             }
             .into(),
         );
@@ -104,20 +126,29 @@ mod test {
 /// }
 /// ```
 #[macro_export]
-macro_rules! reference_templates {
-    ( |$v:vis $i:ident| $( $k:ident => $l:expr ),* ) => {
+macro_rules! dynamic_templates {
+    ( |$v:vis $i:ident| $( $k:ident => $l:expr; { $( $kn:ident ),* }),* ) => {
+        mod dyn_interp {
+            use crate::interpolation_struct;
+
+            $(
+                interpolation_struct! { |pub $k| $( $kn ),* }
+            )*
+        }
+
         $v enum $i {
             $( $k, )*
             Other(String),
         }
 
-        impl AsRef<str> for $i {
-            fn as_ref(&self) -> &str {
-                match self {
-                    $(
-                        $i::$k => include_str!(concat!("templates/", $l, ".template")),
-                    )*
-                    $i::Other(s) => s.as_str()
+        impl From<$i> for Template {
+            fn from(i: $i) -> Self {
+                match i {
+                    $( $i::$k => Template {
+                        source: include_str!(concat!("templates/", $l, ".template")).into(),
+                        path: None,
+                    }, )*
+                    $i::Other(s) => Template::new(s.into(), None),
                 }
             }
         }
@@ -145,19 +176,13 @@ macro_rules! interpolation_struct {
                 let mut map = HashMap::new();
 
                 $(
-                    map.insert(stringify!($k).to_string(), i.$k.clone());
+                    map.insert(stringify!($k).to_string().to_uppercase(), i.$k.clone());
                 )*
 
                 map
             }
         }
     };
-}
-
-#[macro_export]
-macro_rules! __macro_repeat_count {
-    () => (0usize);
-    ( $x:tt $($xs:tt)* ) => (1usize + __macro_repeat_count!($($xs)*));
 }
 
 #[macro_export]
@@ -171,4 +196,38 @@ macro_rules! static_templates {
             )*
         ];
     };
+}
+
+#[macro_export]
+macro_rules! imap {
+    ( $( $n:expr, $s:expr => { $($fk:expr => $fv:expr),* } ),* ) => {{
+        let mut artifacts: Vec<Artifact> = Vec::new();
+
+        $(
+            let mut artifact = Artifact {
+                name: $n.to_string(),
+                content: $s.as_ref().to_string(),
+            };
+
+            let mut fields: HashMap<String, String> = HashMap::new();
+
+            $(
+                fields.insert($fk.to_string(), $fv.to_string());
+            )*
+
+            for (k, v) in fields {
+                artifact.content = interpolate(&artifact.content, &k, &v);
+            }
+
+            artifacts.push(artifact);
+        )*
+
+        artifacts
+    }};
+}
+
+#[macro_export]
+macro_rules! __macro_repeat_count {
+    () => (0usize);
+    ( $x:tt $($xs:tt)* ) => (1usize + __macro_repeat_count!($($xs)*));
 }
