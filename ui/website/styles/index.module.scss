@@ -3,13 +3,20 @@
 }
 
 .header {
+  // background-image: radial-gradient(
+  //   at 50% 0%,
+  //   rgb(49, 51, 83),
+  //   rgb(26, 28, 58)
+  // );
   background-image: radial-gradient(
-    at 50% 0%,
-    rgb(49, 51, 83),
-    rgb(26, 28, 58)
+    at 100% 0%,
+    rgb(49, 49, 83),
+    rgb(38, 26, 58) 85%
   );
 
   @apply pb-12 lg:pb-44 lg:pt-12;
+
+  position: relative;
 
   .container {
     @apply my-12 lg:my-0 flex flex-col lg:flex-row items-center text-white space-x-36;
@@ -18,7 +25,7 @@
       flex: 1;
 
       > h1 {
-        @apply font-semibold;
+        @apply font-bold;
 
         @apply text-5xl sm:text-6xl;
         @apply text-center md:text-left;

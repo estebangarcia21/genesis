@@ -2,6 +2,7 @@ import { PAGE_CONTENT_MAX_WIDTH } from 'components/misc/ContentContainer';
 import { useResponsiveValue } from 'utils/useResponsiveValue';
 import { IndexContentContainer } from './IndexContentContainer';
 import styles from './IndexFrameworkSpotlight.module.scss';
+import Image from 'next/image';
 
 export type IndexFrameworkSpotlightCategory = 'Project development tools';
 
@@ -49,6 +50,7 @@ export function IndexFrameworkSpotlight({
           <div className={styles.imageContainer}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={imgSrc} alt="" />
+            {/* <Image src={imgSrc} alt="" layout='responsive' objectFit='contain' objectPosition='top left' width='100%' height={69} /> */}
           </div>
         </div>
       </div>

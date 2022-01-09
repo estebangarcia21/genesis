@@ -1,15 +1,19 @@
 .container {
   @apply bg-[#e9f3ff];
 
+
   border-radius: 32px;
 
   .content {
-    @apply text-black flex flex-col-reverse h-max md:flex-row md:space-x-12 lg:space-x-24;
+    @apply text-black flex flex-col-reverse md:flex-row md:space-x-12 lg:space-x-24;
+
+    height: 100%;
 
     .imageContainer {
+      position: relative;
       flex: 3;
 
-      @apply relative flex flex-col;
+      @apply flex flex-col;
 
       > h1 {
         @apply font-semibold text-sm font-mono mb-2;
@@ -17,11 +21,10 @@
     }
 
     .info {
-      @apply flex-[2] sm:flex-[3];
-      @apply mt-6 md:mt-0;
+      @apply mt-6 md:mt-0 flex-[2] sm:flex-[3];
 
       > h1 {
-        @apply font-bold text-blueGray;
+        @apply font-semibold text-blueGray;
         @apply text-3xl leading-[3rem] md:text-4xl md:leading-[3.5rem] xl:text-5xl xl:leading-[4rem];
       }
 

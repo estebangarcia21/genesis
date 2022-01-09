@@ -47,14 +47,15 @@ const Home: NextPage = () => {
 
             <div className={styles.graphic}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/transact.svg" alt="" />
+              <img src="/images/transact-indigo.svg" alt="" />
             </div>
           </div>
         </ContentContainer>
 
         <IndexWhySection />
+
         <IndexFrameworkSpotlight
-          title="Scale up with a RESTful API using Express"
+          title="Scale efficiently with a managed ExpressJS API"
           description="Generate all the necessary API routes for your program model using the Genesis API SDL. Add authorization and validation to your API routes in just a few lines of code."
           imgSrc={expressCodeImagePath}
           category="Project development tools"
