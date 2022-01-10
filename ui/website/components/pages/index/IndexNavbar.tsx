@@ -21,7 +21,7 @@ function DesktopContent() {
       <ul className={styles.links}>
         <ResponsiveImage
           parentTag="div"
-          src="/images/frameworks/nextjs-circle.svg"
+          src="/genesis_logo.svg"
           alt=""
           height={35}
           width={35}

@@ -19,8 +19,8 @@ export function IndexFrameworkSpotlight({
   title,
   category
 }: IndexFrameworkSpotlightProps) {
-  const xPadding = useResponsiveValue(32, { md: 60, lg: 120 });
-  const yPadding = useResponsiveValue(40, { md: 45, lg: 90 });
+  const xPadding = useResponsiveValue(32, { md: 60, lg: 100 });
+  const yPadding = useResponsiveValue(40, { md: 45, lg: 70 });
 
   return (
     <IndexContentContainer maxWidth={PAGE_CONTENT_MAX_WIDTH + xPadding * 2}>

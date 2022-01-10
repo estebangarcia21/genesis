@@ -14,7 +14,7 @@ export function IndexWhySectionStep({
 }: IndexWhySectionStepProps) {
   return (
     <div className={styles.container}>
-      <ResponsiveImage src={imgSrc} alt="" width={100} height={100} />
+      <ResponsiveImage src={imgSrc} alt="" width={50} height={50} />
 
       <h1>{title}</h1>
       <p>{description}</p>

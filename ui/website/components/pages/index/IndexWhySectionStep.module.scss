@@ -1,14 +1,8 @@
 .container {
   flex: 1;
 
-  @apply text-center m-4;
-
-  > h3 {
-    @apply mx-auto font-semibold text-lg w-12 h-12 rounded bg-blue-400 shadow-lg flex flex-col text-white items-center justify-center;
-  }
-
   > h1 {
-    @apply mt-4 text-2xl;
+    @apply mt-4 text-xl font-medium lg:text-[1.25rem];
   }
 
   > p {

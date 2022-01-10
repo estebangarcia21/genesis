@@ -33,9 +33,9 @@ const Home: NextPage = () => {
               </h1>
 
               <h2>
-                Genesis gives you the power to quickly get started on your
-                APIs. Ignore the long tedious setup and get right to work with
-                the tools Genesis provides.
+                Genesis gives you the power to quickly get started on your APIs.
+                Ignore the long tedious setup and get right to work with the
+                tools Genesis provides.
               </h2>
 
               <div className={styles.buttons}>
@@ -73,9 +73,10 @@ const Home: NextPage = () => {
           </div>
 
           <h2 className={styles.subtitle}>
-            We strive to empower developers to build with the best possible productivity. <br />
-            As such, we are constantly working on supporting the latest
-            open source technologies.
+            We strive to empower developers to build with the best possible
+            productivity. <br />
+            As such, we are constantly working on supporting the latest open
+            source technologies.
           </h2>
 
           <div className={styles.frameworksImages}>
