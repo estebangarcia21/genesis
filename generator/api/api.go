@@ -1,5 +1,7 @@
 package api
 
+import "fmt"
+
 type API struct {
 	Name          string
 	Version       string
@@ -7,8 +9,8 @@ type API struct {
 	Resources     []Resource
 }
 
-type APIProvider interface {
-	CreateAPI(model string) *API
+type ResourceProvider interface {
+	ParseResources(string) []Resource
 }
 
 type Resource struct {
@@ -29,7 +31,18 @@ type ResourceAttribute struct {
 	Datatype ResourceAttributeDatatype
 }
 
-// CreateFileAssets returns a map of relative paths to file content bytes.
-func (a *API) CreateFileAssets() map[string][]byte {
+func ResourceAttributeDatatypeFromString(s string) ResourceAttributeDatatype {
+	switch s {
+	case "Int":
+		return Integer32
+	case "Integer":
+		return Integer32
+	default:
+		panic(fmt.Sprintf("unrecognized model type '%s'. Please open an issue to add support for this data type", s))
+	}
+}
+
+// CreateAssetTree returns a map of relative paths to file content bytes.
+func (a *API) CreateAssetTree() map[string][]byte {
 	return make(map[string][]byte)
 }
