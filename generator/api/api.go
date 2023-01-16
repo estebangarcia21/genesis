@@ -1,6 +1,8 @@
 package api
 
-import "fmt"
+import (
+	"strings"
+)
 
 type API struct {
 	Name          string
@@ -10,7 +12,7 @@ type API struct {
 }
 
 type ResourceProvider interface {
-	ParseResources(string) []Resource
+	ParseResources() []Resource
 }
 
 type Resource struct {
@@ -21,25 +23,53 @@ type Resource struct {
 type ResourceAttributeDatatype int
 
 const (
-	Integer32 ResourceAttributeDatatype = iota
+	Number ResourceAttributeDatatype = iota
+	Boolean
 	String
-	Funnel
+	Date
+	DateTime
+	Unknown
 )
+
+func (r ResourceAttributeDatatype) String() string {
+	switch r {
+	case Number:
+		return "Number"
+	case String:
+		return "String"
+	case Date, DateTime:
+		return "Date"
+	case Unknown:
+		return "Unknown"
+	default:
+		return "<?>"
+	}
+}
+
+func ResourceAttributeDatatypeFromString(s string) ResourceAttributeDatatype {
+	if v, ok := map[string]ResourceAttributeDatatype{
+		"integer":  Number,
+		"int":      Number,
+		"long":     Number,
+		"uint":     Number,
+		"float":    Number,
+		"double":   Number,
+		"datetime": DateTime,
+		"date":     DateTime,
+		"string":   String,
+		"bool":     Boolean,
+		"boolean":  Boolean,
+	}[strings.ToLower(s)]; ok {
+		return v
+	}
+	return Unknown
+}
 
 type ResourceAttribute struct {
 	Name     string
 	Datatype ResourceAttributeDatatype
-}
-
-func ResourceAttributeDatatypeFromString(s string) ResourceAttributeDatatype {
-	switch s {
-	case "Int":
-		return Integer32
-	case "Integer":
-		return Integer32
-	default:
-		panic(fmt.Sprintf("unrecognized model type '%s'. Please open an issue to add support for this data type", s))
-	}
+	Optional bool
+	List     bool
 }
 
 // CreateAssetTree returns a map of relative paths to file content bytes.

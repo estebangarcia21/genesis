@@ -1,25 +1,30 @@
 package api
 
-import "strings"
+import (
+	"strings"
+)
 
-type Prisma struct{}
+type Prisma struct {
+	Schema string
+}
 
-func (p Prisma) ParseResources(prismaSchema string) []Resource {
+func (p Prisma) ParseResources() []Resource {
 	var resources []Resource
 
 	var modelName string
 	var modelBody []string
 
-	lines := strings.Split("\n", "")
+	lines := strings.Split(p.Schema, "\n")
 	for _, l := range lines {
 		if modelBody != nil {
-			modelBody = append(modelBody, l)
 			if strings.Contains(l, "}") {
-				b := strings.Join(modelBody, "")
+				b := strings.TrimSpace(strings.Join(modelBody, "\n"))
 				resources = append(resources, createResource(modelName, b))
 
 				modelName = ""
 				modelBody = nil
+			} else {
+				modelBody = append(modelBody, l)
 			}
 			continue
 		}
@@ -41,10 +46,16 @@ func (p Prisma) ParseResources(prismaSchema string) []Resource {
 func createResource(name string, body string) Resource {
 	var attrs []ResourceAttribute
 
-	lines := strings.Split("\n", "")
+	lines := strings.Split(body, "\n")
 	for _, l := range lines {
-		t := strings.Split(l, " ")
-		a := ResourceAttribute{Name: t[0], Datatype: ResourceAttributeDatatypeFromString(t[1])}
+		toks := strings.Fields(l)
+		ty := toks[1]
+		a := ResourceAttribute{
+			Name:     toks[0],
+			Datatype: ResourceAttributeDatatypeFromString(strings.TrimSuffix(strings.TrimSuffix(ty, "?"), "[]")),
+			Optional: strings.HasSuffix(ty, "?"),
+			List:     strings.HasSuffix(strings.TrimSuffix(ty, "?"), "[]"),
+		}
 		attrs = append(attrs, a)
 	}
 
