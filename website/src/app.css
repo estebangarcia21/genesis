@@ -6,22 +6,27 @@
 @tailwind utilities;
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
-h1 {
-	font-family: 'Readex Pro', sans-serif;
+h1,
+button,
+a {
+  @apply font-heading;
 }
 
 h2,
 h3,
 h4,
 h5,
-a,
-button,
 p,
 input,
 li {
-	font-family: 'Karla', sans-serif;
+  @apply font-paragraph;
+}
+
+textarea {
+  @apply font-mono;
+  font-variant-ligatures: none;
 }

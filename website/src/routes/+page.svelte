@@ -8,25 +8,21 @@
 
 <Container>
 	<section class="py-20 text-center">
-		<h1 class="text-4xl font-semibold">Genesis</h1>
-		<p class="mt-2">Generate APIs from a PrismaDB schema!</p>
+		<h1 class="text-5xl font-bold">Genesis</h1>
+		<h2 class="mt-2 text-2xl">Generate Typescript API template projects!</h2>
 
 		<div class="flex flex-row justify-center mt-6 space-x-4">
-			<button
-				class="font-mono px-8 py-4 bg-indigo-600 rounded-sm font-semibold text-white text-sm transition hover:bg-indigo-500"
+			<a
+				href="/dashboard/overview"
+				class="shadow-lg shadow-blue-500/30 px-8 py-4 bg-blue-600 rounded-sm font-semibold text-white text-sm transition hover:bg-blue-500"
 			>
-				Web Tool
-			</button>
-			<button
-				class="font-mono px-8 py-4 bg-gray-800 rounded-sm font-semibold text-white text-sm transition hover:bg-gray-700"
-			>
-				CLI Tool
-			</button>
+				Use the Application
+			</a>
 		</div>
 	</section>
 </Container>
 
-<Section title="Project structure" tag="Getting started" colorScheme="blue">
+<Section title="Jump-start your next API project" tag="At a glance" colorScheme="blue">
 	<div class="flex flex-col sm:flex-row sm:space-x-8">
 		<p>
 			Et culpa et excepteur culpa esse cupidatat nostrud aliquip sint. Consectetur consequat nostrud

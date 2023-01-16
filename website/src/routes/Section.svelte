@@ -12,7 +12,7 @@
 	};
 
 	const COLOR_SCHEME_ATTRIBUTES: Record<ColorScheme, ColorSchemeAttributes> = {
-		blue: { bgColor: 'bg-blue-50', tagColor: 'text-indigo-600' },
+		blue: { bgColor: 'bg-blue-50', tagColor: 'text-blue-600' },
 		indigo: { bgColor: 'bg-indigo-50', tagColor: 'text-indigo-600' },
 		cyan: { bgColor: 'bg-cyan-50', tagColor: 'text-cyan-600' }
 	};
@@ -26,13 +26,13 @@
 			<div>
 				{#if tag}
 					<p
-						class="text-sm md:text-base font-mono uppercase mb-2 font-semibold tracking-widest {attrs.tagColor}"
+						class="text-sm font-heading md:text-base uppercase mb-4 font-semibold tracking-widest {attrs.tagColor}"
 					>
 						{tag}
 					</p>
 				{/if}
 
-				<h1 class="text-2xl md:text-4xl max-w-md mb-2 font-bold">{title}</h1>
+				<h1 class="text-2xl md:text-4xl max-w-md mb-4 font-bold">{title}</h1>
 
 				<slot />
 			</div>

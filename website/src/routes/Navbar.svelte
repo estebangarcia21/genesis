@@ -16,25 +16,26 @@
 			</ul>
 
 			<div class="flex-[2] flex flex-row justify-end">
-				<button
-					class="flex flex-row items-center font-mono px-8 py-2 border-2 border-gray-800 rounded-sm font-semibold text-gray-800 text-sm transition hover:bg-gray-800 hover:text-white"
+				<a
+					class="flex flex-row items-center px-8 py-2 border-2 border-gray-800 rounded-sm font-semibold text-gray-800 text-sm transition hover:bg-gray-800 hover:text-white"
+					href="/"
 				>
 					<span class="h-4 mr-2">
 						<GoMarkGithub />
 					</span>
 					Github
-				</button>
+				</a>
 			</div>
 		</div>
 	</Container>
 </nav>
 
 <style>
-	a {
-		@apply text-gray-900 transition;
+	ul a {
+		@apply text-gray-900 transition font-semibold;
 	}
 
-	a:hover {
-		@apply text-indigo-600;
+	ul a:hover {
+		@apply text-blue-600;
 	}
 </style>
