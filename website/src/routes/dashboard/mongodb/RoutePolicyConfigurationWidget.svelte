@@ -1,5 +1,6 @@
 <script lang="ts">
   import { parsedASTModels } from 'src/stores/dashboard/prisma/create';
+  import RoutePolicy from './RoutePolicy.svelte';
   import type { Model } from './types';
 
   let models: Model[] = [];
@@ -12,4 +13,6 @@
   ipsum magna deserunt aliqua laborum ipsum velit adipisicing non consectetur.
 </p>
 
-{#each models as model}{/each}
+{#each models as model}
+  <RoutePolicy {model} />
+{/each}

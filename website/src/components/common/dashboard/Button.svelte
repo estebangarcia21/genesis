@@ -2,6 +2,7 @@
   export let color: 'blue' | 'gray';
   export let text: string;
   export let href: string | undefined = undefined;
+  export let onClick: ((e: MouseEvent) => void) | null = null;
 
   type TailwindCSSClasses = {
     txt: string;
@@ -18,11 +19,11 @@
 
   $: elem = href ? 'a' : 'button';
   $: props = {
-    class: `px-4 py-2 text-sm mt-2 rounded-sm transition ${attrs.bg} ${attrs.txt} ${attrs.hover} font-medium`,
+    class: `px-4 py-2 text-sm rounded-sm transition ${attrs.bg} ${attrs.txt} ${attrs.hover} font-medium`,
     href
   };
 </script>
 
-<svelte:element this={elem} {...props}>
+<svelte:element this={elem} {...props} on:click={onClick}>
   {text}
 </svelte:element>
